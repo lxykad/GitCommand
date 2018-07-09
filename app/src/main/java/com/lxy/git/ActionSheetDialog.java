@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  * @author liuxinyu
  * @date 2018/7/8  下午7:14
  */
-public class ActionSheetDialog extends DialogFragment {
+public class ActionSheetDialog extends BaseDialogFragment {
 
     private static List<String> mList;
     private RecyclerView mRecyclerView;
@@ -34,29 +35,25 @@ public class ActionSheetDialog extends DialogFragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onStart() {
+        super.onStart();
+        Window window = getDialog().getWindow();
+        if (window != null) {
+            window.getDecorView().setPadding(0, 0, 0, 0);
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected int getContentView() {
+        return R.layout.action_sheet_content_view;
+    }
+
+    @Override
+    protected void init(View view) {
         getDialog().getWindow().setWindowAnimations(R.style.popup_window_bottom_anim);
         getDialog().getWindow().setGravity(Gravity.BOTTOM);
-
-        WindowManager.LayoutParams lp = getDialog().getWindow().getAttributes();
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        getDialog().getWindow().setAttributes(lp);
-
-
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.action_sheet_content_view, container, false);
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
         mRecyclerView = view.findViewById(R.id.recycler_view);
         mAdapter = new ActionSheetAdapter(mList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -77,7 +74,6 @@ public class ActionSheetDialog extends DialogFragment {
 
             }
         });
-
     }
 
     public void setOnActionSheetClick(OnActionSheetItemClickListener listener) {
