@@ -24,7 +24,7 @@ public class ActionSheetAdapter extends RecyclerView.Adapter<ActionSheetAdapter.
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.action_sheet_item_view, viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.action_sheet_item_view, viewGroup, false);
         MyHolder holder = new MyHolder(view);
         return holder;
     }

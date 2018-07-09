@@ -1,9 +1,5 @@
 package com.lxy.git;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -11,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -42,7 +38,6 @@ public class ActionSheetDialog extends BaseDialogFragment {
             window.getDecorView().setPadding(0, 0, 0, 0);
             window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
-
     }
 
     @Override
@@ -58,6 +53,12 @@ public class ActionSheetDialog extends BaseDialogFragment {
         mAdapter = new ActionSheetAdapter(mList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
+
+        if (mList.size() > 5) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.height = 600;
+            mRecyclerView.setLayoutParams(params);
+        }
 
         mRecyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(mRecyclerView) {
             @Override

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 3; i++) {
             mList.add("name: " + i);
         }
     }
