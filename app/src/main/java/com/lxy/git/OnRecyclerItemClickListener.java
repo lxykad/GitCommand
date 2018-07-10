@@ -8,10 +8,10 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- *  @author liuxinyu
- *  @date 2018/7/8  下午10:18
+ * @author liuxinyu
+ * @date 2018/7/8  下午10:18
  */
-public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItemTouchListener{
+public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
 
     private RecyclerView mRecyclerView;
     private GestureDetectorCompat mGesture;
@@ -49,7 +49,6 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
             return true;
         }
 
-        //长按
         @Override
         public void onLongPress(MotionEvent e) {
             super.onLongPress(e);
@@ -62,8 +61,13 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
         }
     }
 
-    //条目点击回调接口
+    /**
+     * 条目点击回调接口
+     */
     public abstract void onItemClick(RecyclerView.ViewHolder vh);
-    //条目长按事件
+
+    /**
+     * 条目长按事件
+     */
     public abstract void onItemLongClick(RecyclerView.ViewHolder vh);
 }
