@@ -69,11 +69,6 @@ public class ActionSheetDialog extends BaseDialogFragment {
                     itemClickListener.onItemClick(name);
                 }
             }
-
-            @Override
-            public void onItemLongClick(RecyclerView.ViewHolder vh) {
-
-            }
         });
     }
 

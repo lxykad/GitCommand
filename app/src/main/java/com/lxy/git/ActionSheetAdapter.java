@@ -34,6 +34,7 @@ public class ActionSheetAdapter extends RecyclerView.Adapter<ActionSheetAdapter.
         String name = mList.get(position);
 
         holder.textView.setText(name);
+        holder.tvDes.setText("des: " + name);
     }
 
     @Override
@@ -44,10 +45,12 @@ public class ActionSheetAdapter extends RecyclerView.Adapter<ActionSheetAdapter.
     class MyHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
+        TextView tvDes;
 
         public MyHolder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.tv_name);
+            tvDes = itemView.findViewById(R.id.tv_des);
         }
     }
 }

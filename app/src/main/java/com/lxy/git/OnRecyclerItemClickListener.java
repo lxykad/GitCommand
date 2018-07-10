@@ -45,7 +45,6 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
                 RecyclerView.ViewHolder childViewHolder = mRecyclerView.getChildViewHolder(item);
                 onItemClick(childViewHolder);
             }
-
             return true;
         }
 
@@ -64,10 +63,10 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
     /**
      * 条目点击回调接口
      */
-    public abstract void onItemClick(RecyclerView.ViewHolder vh);
+    public void onItemClick(RecyclerView.ViewHolder vh){};
 
     /**
      * 条目长按事件
      */
-    public abstract void onItemLongClick(RecyclerView.ViewHolder vh);
+    public void onItemLongClick(RecyclerView.ViewHolder vh){};
 }
