@@ -1,5 +1,6 @@
 package com.lxy.git;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,5 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(view.getContext(),name,Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void goList(View view) {
+        Intent intent = new Intent(this,ListActivity.class);
+        startActivity(intent);
     }
 }
